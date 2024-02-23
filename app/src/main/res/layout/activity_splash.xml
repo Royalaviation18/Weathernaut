@@ -24,7 +24,10 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:fontFamily="sans-serif-medium"
+        />
+
 
 
 </RelativeLayout>
