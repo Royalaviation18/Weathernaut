@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var  fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var tvLati : TextView
     private lateinit var tvLongi : TextView
+    private lateinit var address : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         tvLati = findViewById(R.id.tvLati)
         tvLongi = findViewById(R.id.tvLongi)
+        address = findViewById(R.id.tvAddress)
 
         getCurrentLocation()
 
@@ -72,6 +74,8 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
                             tvLati.text = ""+location.latitude
                             tvLongi.text= ""+location.longitude
+                            val textAddress = "Address: "+getAddressName(location.latitude,location.longitude)
+                            address.text = textAddress
                         }
                     }
             }
@@ -88,6 +92,17 @@ class MainActivity : AppCompatActivity() {
             requestPermission()
         }
 
+    }
+
+    private fun getAddressName(latitude: Double, longitude: Double): String {
+        var addressName = ""
+        val geoCoder = Geocoder(this,Locale.getDefault())
+        val address = geoCoder.getFromLocation(latitude,longitude,1)
+
+        if(address!=null){
+            addressName =address[0].locality
+        }
+        return addressName
     }
 
     private fun isLocationEnabled(): Boolean{
