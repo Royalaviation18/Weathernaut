@@ -10,8 +10,9 @@
     <ImageView
         android:id="@+id/ivSplash"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:src="@drawable/splash_background"
+        android:layout_centerInParent="true"
+        android:layout_height="300dp"
+        android:src="@drawable/splash_bg"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
 
@@ -25,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:layout_marginLeft="20dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/nimbussanl_regu"
         />
 
 

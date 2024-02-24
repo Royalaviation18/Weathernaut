@@ -6,37 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <TextView
-       android:id="@+id/tvLati"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:hint="Latitude comes here "
-       android:layout_centerVertical="true"
-       android:textSize="18sp"
-       android:layout_marginLeft="90dp"/>
+    <TextView
+        android:id="@+id/tvLati"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="90dp"
+        android:hint="Latitude comes here "
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvLongi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/tvLati"
-        android:textSize="18sp"
-        android:hint="Longitude comes here "
         android:layout_centerVertical="true"
-        android:layout_marginLeft="90dp"/>
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="10dp"
+        android:hint="Longitude comes here "
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Address"
-        android:fontFamily="@font/nimbussani_boldcndital"
         android:layout_below="@id/tvLongi"
         android:layout_marginLeft="90dp"
         android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        />
+        android:fontFamily="@font/nimbussani_boldcndital"
+        android:hint="Address"
+        android:textSize="18sp" />
 
 
 </RelativeLayout>
