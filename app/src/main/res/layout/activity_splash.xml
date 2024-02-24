@@ -4,31 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/ivSplash"
         android:layout_width="match_parent"
-        android:layout_centerInParent="true"
         android:layout_height="300dp"
-        android:src="@drawable/splash_bg"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:src="@drawable/splash_bg" />
 
     <TextView
         android:id="@+id/tvSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivSplash"
-        android:text="Discover the weather in your\n city and plan your day\n correctly"
-        android:textSize="20sp"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/nimbussanl_regu"
-        />
-
+        android:gravity="center"
+        android:text="Discover the weather in your\n city and plan your day\n correctly"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
