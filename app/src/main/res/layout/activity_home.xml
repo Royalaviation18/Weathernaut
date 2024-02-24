@@ -4,51 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:background="@color/white">
+    android:background="@color/imgBg"
+    tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/tvCityName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City Name"
-        android:layout_centerHorizontal="true"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/nimbussanl_regu"
-        android:layout_marginTop="30dp"/>
-
-    <TextView
-        android:id="@+id/tvWeatherCondition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvCityName"
-        android:text="Weather Condition"
-        android:textSize="25sp"
-        android:fontFamily="@font/nimbussanl_boldcond"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"/>
-
-    <TextView
-        android:id="@+id/tvTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvWeatherCondition"
-        android:text="23 ℃"
-        android:textSize="22sp"
-        android:fontFamily="@font/nimbussanl_regu"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="32dp"/>
-    
-    <ImageView
+    <LinearLayout
+        android:id="@+id/linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@id/tvWeatherCondition"
-        android:src="@drawable/sunny_day"/>
-    
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="600dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="-50dp">
+
+        <ImageView
+            android:layout_marginTop="140dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rainy_day"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearlayout"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/layout_gradient"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="30dp"/>
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Your Email"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Your Password"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/button_gradient"
+            android:text="Log In"/>
+
+
+    </LinearLayout>
+
+
+
 
 
 </RelativeLayout>
