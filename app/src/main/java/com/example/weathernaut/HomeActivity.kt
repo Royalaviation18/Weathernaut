@@ -3,6 +3,7 @@ package com.example.weathernaut
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.weathernaut.databinding.ActivityHomeBinding
 import com.example.weathernaut.databinding.ActivityMainBinding
 import retrofit2.Call
@@ -27,19 +28,24 @@ class HomeActivity : AppCompatActivity() {
         val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.weatherapi.com/v1/")
             .build().create(ApiInterface::class.java)
-        val response = retrofit.getWeatherData("45078c7afe8248ef93d113741221306","Vadodara",3,"metric")
+        val response = retrofit.getWeatherData("45078c7afe8248ef93d113741221306","Vadodara",3,"no","no")
         response.enqueue(object: Callback<Weathernaut>{
+
             override fun onResponse(call: Call<Weathernaut>, response: Response<Weathernaut>) {
                 val responseBody = response.body()
                 if(response.isSuccessful && responseBody != null){
                     val temperature = responseBody.current.temp_c.toString()
-//                    Log.d("TAG", "onResponse: $temperature")
-                    binding.tvTemperature.text ="$temperature"
+                    val weatherCondition = responseBody.current.condition.text
+                    val forcastDayOne =responseBody.forecast.forecastday
+                    binding.tvTemperature.text ="$temperature ℃"
+                    binding.tvWeatherCondition.text = "$weatherCondition"
+
                 }
+
             }
 
             override fun onFailure(call: Call<Weathernaut>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext,"No Success",Toast.LENGTH_SHORT).show()
             }
 
         })
