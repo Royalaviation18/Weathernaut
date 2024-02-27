@@ -1,11 +1,11 @@
 package com.example.weathernaut
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.weathernaut.databinding.ActivityHomeBinding
-import com.example.weathernaut.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +29,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         fetchWeatherData()
+        binding.btnMore.setOnClickListener {
+            val intent = Intent(applicationContext,MoreDetailsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchWeatherData() {
@@ -51,34 +55,42 @@ class HomeActivity : AppCompatActivity() {
                     val minTempDayOne = forecastDayList[0].day.mintemp_c.toInt()
                     val maxTempDayOne = forecastDayList[0].day.maxtemp_c.toInt()
                     val weatherConditionDayOne = forecastDayList[0].day.condition.text
+                    changeWeatherIcon(weatherConditionDayOne, binding.ivToday)
 
                     val forecastDayTwo = forecastDayList[1].date
                     val minTempDayTwo = forecastDayList[1].day.mintemp_c.toInt()
                     val maxTempDayTwo = forecastDayList[1].day.maxtemp_c.toInt()
                     val weatherConditionDayTwo = forecastDayList[1].day.condition.text
+                    changeWeatherIcon(weatherConditionDayTwo, binding.ivTomorrow)
 
                     val forecastDayThree = forecastDayList[2].date
                     val minTempDayThree = forecastDayList[2].day.mintemp_c.toInt()
                     val maxTempDayThree = forecastDayList[2].day.maxtemp_c.toInt()
                     val weatherConditionDayThree = forecastDayList[2].day.condition.text
-                    val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(forecastDayThree)
+                    val date =
+                        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(forecastDayThree)
                     val dayOfWeek = getDayOfWeek(date)
+                    changeWeatherIcon(weatherConditionDayThree, binding.ivDayAfter)
 
-                    binding.tvTemperature.text = "$temperature ℃"
+                    binding.tvTemperature.text = "$temperature° C"
                     binding.tvWeatherCondition.text = "$weatherCondition"
                     binding.tvCityName.text = "$cityName"
                     binding.tvMax.text = "$maxTempDayOne° /"
                     binding.tvMin.text = "$minTempDayOne°"
-                    binding.tvCondition.text ="$weatherConditionDayOne"
+                    binding.tvCondition.text = "$weatherConditionDayOne"
 
-                    binding.tvTmMax.text ="$maxTempDayTwo° /"
-                    binding.tvTmMin.text="$minTempDayTwo°"
-                    binding.tvTmCondition.text="$weatherConditionDayTwo"
+
+                    binding.tvTmMax.text = "$maxTempDayTwo° /"
+                    binding.tvTmMin.text = "$minTempDayTwo°"
+                    binding.tvTmCondition.text = "$weatherConditionDayTwo"
+
 
                     binding.tvDayAfterMax.text = "$maxTempDayThree° /"
                     binding.tvDayAfterMin.text = "$minTempDayThree°"
-                    binding.tvDayAfterCondtion.text="$weatherConditionDayThree"
-                    binding.tvDayAfter.text= "$dayOfWeek"
+                    binding.tvDayAfterCondtion.text = "$weatherConditionDayThree"
+                    binding.tvDayAfter.text = "$dayOfWeek"
+
+                    changeMainWeatherImage(weatherCondition)
                 }
 
             }
@@ -90,7 +102,70 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-    private fun getDayOfWeek(date: Date?): String {
+    private fun changeWeatherIcon(weatherCondition: String, imageView: ImageView) {
+        when (weatherCondition) {
+            "Haze" -> {
+                imageView.setImageResource(R.drawable.haze)
+            }
+
+            "Clouds", "Partly Clouds", "Overcast", "Mist", "Foggy" -> {
+                imageView.setImageResource(R.drawable.partly_cloudy)
+            }
+
+            "Clear Sky", "Sunny", "Clear" -> {
+                imageView.setImageResource(R.drawable.sun)
+            }
+
+            "Light Rain", "Drizzle", "Moderate Rain", "Showers", "Heavy Rain" -> {
+                imageView.setImageResource(R.drawable.d_rain)
+            }
+
+            "Light Snow", "Moderate Snow", "Heavy Snow", "Blizzard" -> {
+                imageView.setImageResource(R.drawable.snow)
+            }
+
+            else -> {
+                imageView.setImageResource(R.drawable.sun)
+            }
+
+        }
+    }
+
+    private fun changeMainWeatherImage(weatherCondition: String) {
+        when (weatherCondition) {
+            "Haze" -> {
+                binding.ivMainWeather.setImageResource(R.drawable.haze_day)
+            }
+
+            "Clouds", "Partly Clouds", "Overcast", "Mist", "Foggy" -> {
+                binding.ivMainWeather.setImageResource(R.drawable.cloudy_day)
+            }
+
+            "Clear Sky", "Clear" -> {
+                binding.ivMainWeather.setImageResource(R.drawable.clear_day)
+            }
+
+            "Light Rain", "Drizzle", "Moderate Rain", "Showers", "Heavy Rain" -> {
+                binding.ivMainWeather.setImageResource(R.drawable.rainy_day)
+            }
+
+            "Light Snow", "Moderate Snow", "Hesavy Snow", "Blizzard" -> {
+                binding.ivMainWeather.setImageResource(R.drawable.snow_day)
+            }
+
+            "Sunny" -> {
+                binding.ivMainWeather.setImageResource(R.drawable.sunny_day)
+            }
+
+            else -> {
+                binding.ivMainWeather.setImageResource(R.drawable.sunny_day)
+            }
+
+        }
+
+    }
+
+    private fun getDayOfWeek(date: Date?): Any {
         val calendar = Calendar.getInstance()
         date?.let { calendar.time = it }
 

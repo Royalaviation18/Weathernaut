@@ -49,9 +49,10 @@
             android:textSize="14sp" />
 
         <ImageView
+            android:id="@+id/ivMainWeather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="100dp"
             android:src="@drawable/rainy_day" />
 
 
@@ -166,7 +167,7 @@
                 android:id="@+id/tvTmMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="95dp"
                 android:layout_marginTop="25dp"
                 android:text="Max"
                 android:textSize="14sp" />
@@ -223,7 +224,7 @@
                 android:id="@+id/tvDayAfterMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="98dp"
                 android:layout_marginTop="25dp"
                 android:text="Max"
                 android:textSize="14sp" />
@@ -243,6 +244,7 @@
 
 
     <Button
+        android:id="@+id/btnMore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayoutDetails"
