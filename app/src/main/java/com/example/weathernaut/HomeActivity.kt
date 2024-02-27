@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         fetchWeatherData()
         binding.btnMore.setOnClickListener {
-            val intent = Intent(applicationContext,MoreDetailsActivity::class.java)
+            val intent = Intent(applicationContext, MoreDetailsActivity::class.java)
             startActivity(intent)
         }
     }
