@@ -176,7 +176,7 @@
                 android:id="@+id/tvTmMin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="25dp"
                 android:text="Min"
                 android:textSize="14sp" />
@@ -224,7 +224,7 @@
                 android:id="@+id/tvDayAfterMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="98dp"
+                android:layout_marginLeft="117dp"
                 android:layout_marginTop="25dp"
                 android:text="Max"
                 android:textSize="14sp" />
@@ -233,7 +233,7 @@
                 android:id="@+id/tvDayAfterMin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="25dp"
                 android:text="Min"
                 android:textSize="14sp" />
