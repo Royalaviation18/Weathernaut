@@ -35,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+
     private fun fetchWeatherData() {
 
         val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
